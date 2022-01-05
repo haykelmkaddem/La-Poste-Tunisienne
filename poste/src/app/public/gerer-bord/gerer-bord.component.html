@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  
+
+  <div class="row">
+    <div class="col-7">
+      Consultation bordereau
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">Code bordereau</th>
+            <th scope="col">etat bordereau</th>
+            <th scope="col">Validation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of bord">
+            <td>{{b.code_bordereau}}</td>
+            <td  (click)="dernierDepot(b.code_bordereau)">{{b.etat_borderaux}}</td>
+            <td>{{b.validation}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+        <div class="col-1">
+         <span class="vertical-line"></span>
+        </div>
+
+       <form form [formGroup]="form">
+        <div class="row">
+          <div class="col-md-6"> Consultation prix
+            <select class="form-control btn  " formControlName="pays_origine" (change)="onChangepays($event)" (ngModelChange)="onChangepays($event)">
+              <option *ngFor="let pay of pays" value="{{pay.name}}" >{{pay.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-6  ">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Poids</label>
+              <input class="form-control" type="number" (change)="poid($event)" formControlName="poids_net" placeholder="poids_net">
+            </div>
+          
+          </div>
+        </div>
+        <h5><b>Tarif: </b>{{tarif.tarif}}</h5>
+<hr>
+<div class="row">
+  <div class="col-md-6"> Consultation prix
+    <select class="form-control btn  " formControlName="pays1" (change)="onChangepays($event)" (ngModelChange)="onChangepays($event)">
+      <option *ngFor="let pay of pays" value="{{pay.name}}" >{{pay.name}}</option>
+    </select>
+  </div>
+  <div class="col-md-6  ">
+    <div class="form-group">
+      <label for="formGroupExampleInput">Poids volumique</label>
+      <input class="form-control" type="number" (change)="getTarif()" formControlName="poidvol" placeholder="Poids volumique">
+    </div>
+    <input type="radio" (ngModelChange)="getTarifServiceChange()" formControlName="service" value="ems" name="service"  id="ems">&nbsp;
+    <label for="ems">EMS</label><br>
+    <input type="radio" (ngModelChange)="getTarifServiceChange()" formControlName="service" value="rppi" name="service"  id="rppi">&nbsp;
+    <label for="rppi">RPPI</label>
+  </div>
+</div>
+<h5><b>Tarif: </b>{{tariff}}</h5>
+
+      </form> 
+      
+       
+  </div>
+
+
+</div>

@@ -1,0 +1,73 @@
+<header>
+  <img src="/assets/image/header.jpg">
+</header>
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#071d6185 ;">
+  <a class="navbar-brand"  routerLink="/home" routerLinkActive='active'><img src="/assets/logo-poste-tunisienne.png" alt=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
+      <li class="nav-item ">
+        <a *ngIf="isLoggedinUC()" class="nav-link" routerLink="/home"  >Acceuil</a>
+        <a *ngIf="isLoggedinAdmin()" class="nav-link" routerLink="/public/gestion/client"  >Profils clients</a>
+      </li>
+      <li class="nav-item  dropdown">
+        <a *ngIf="isLoggedinAdmin()" class="nav-link" routerLink="public/gestion/rapidposte" > Services et tarifs </a>
+        <a *ngIf="isLoggedinUC()" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Declaration des envois </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  routerLink="public/envoi">Service colis</a>
+          <a class="dropdown-item"  routerLink="public/rapidposte">Service rapid poste</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="isLoggedinUC()" class="nav-link" routerLink="/public/carnetadresses"  > Carnet d'adresses </a>
+        <a *ngIf="isLoggedinAdmin()" class="nav-link" routerLink="public/gestion/rapidposte" > Bordereaux</a>
+
+      </li>
+      <a *ngIf="isLoggedinUC()" class="nav-link" routerLink="/public/gererbordoreau"  >Historique et consultation prix</a>
+
+      <li class="nav-item">
+        <a *ngIf="isLoggedinUC()" class="nav-link" routerLink="public/contactez-nous" routerLinkActive='active' > Contactez-nous </a>
+      </li>
+    </ul>
+    <div class="btn-group btn-group-toggle" >
+
+      <label class="btn btn-secondary " *ngIf="isLoggedinUC()">
+        <input type="radio" name="options" id="option1" (click)="logoutuc()"  > logout
+      </label>
+
+      <label class="btn btn-secondary "  *ngIf="isLoggedinAdmin()" >
+        <input type="radio" name="options" id="option12" (click)="logoutadmin()"  > logout
+      </label>
+
+      <label class="btn btn-secondary " *ngIf="!isLoggedinUC() && !isLoggedinAdmin()">
+        <input type="radio" data-toggle="modal" data-target="#exampleModal" name="options" id="option13"  > Récupération compte
+      </label>
+
+      <label class="btn btn-secondary" *ngIf="!isLoggedinUC() && !isLoggedinAdmin()">
+        <input type="radio" name="options" id="option2" autocomplete="off" routerLink="/public/loginuc" routerLinkActive='active'> Connexion
+      </label>
+
+      <label class="btn btn-secondary" *ngIf="isLoggedinUC()  ">
+        <input type="radio" name="options" id="option22" autocomplete="off" routerLink="/public/loginuc" routerLinkActive='active'> Mon compte
+      </label>
+
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<footer class="bg-light text-center text-lg-start">
+
+  <div class="text-center p-3" style="background-color: #071d6185;">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://www.poste.tn/">La Poste Tunisienne</a>
+  </div>
+
+</footer>

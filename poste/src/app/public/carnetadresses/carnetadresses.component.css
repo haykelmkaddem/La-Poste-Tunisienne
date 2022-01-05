@@ -1,0 +1,21 @@
+.card-header{
+  background: #071d61!important;
+  color: white;
+}
+.card{
+  border: 1px solid #fcc513;
+}
+.my-thead{
+  background: #7E89AD;
+
+}
+.my-bordered-btn{
+  border: .5px solid #ccc;
+  background: #7E89AD!important;
+  color: white!important;
+
+}
+.btn-ajouter{
+  background: #fcc513;
+  color:#071d61!important;
+}

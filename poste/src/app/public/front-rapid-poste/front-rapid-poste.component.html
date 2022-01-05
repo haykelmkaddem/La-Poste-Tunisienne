@@ -1,0 +1,272 @@
+<div class="container">
+  <h1>Destinataire</h1>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-ajouter float-right m-1" data-toggle="modal" data-target="#exampleModal">
+    Mes Adresses
+  </button>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="card">
+
+
+      <!-- carnet adresse -->
+      <table class="w-100 table table-striped">
+
+        <tbody>
+        <tr>
+          <td class="w-75">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="destinataire" placeholder="destinataire">
+            </div>
+          </td>
+          <td class="w-25">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="gsm" placeholder="gsm">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-75">
+            <div class="form-group">
+              <label for="paysdest">Pays</label>
+              <select id="paysdest" class="form-control " formControlName="pays" >
+                <option *ngFor="let pay of pays" value="{{pay.name}}">{{pay.name}}</option>
+              </select>
+            </div>
+          </td>
+          <td class="w-25">
+            <div class="form-group">
+              <label for="paysdest">Fax</label>
+              <input class="form-control" type="text" formControlName="fax" placeholder="fax">
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <td class="w-75">
+
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="adresse" placeholder="adresse">
+            </div>
+          </td>
+          <td class="w-25">
+
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="email" placeholder="email">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-75">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="ville" placeholder="ville">
+            </div>
+
+          </td>
+          <td class="w-25">
+
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="telephone" placeholder="telephone">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-75">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="code_postal" placeholder="code_postal">
+            </div>
+
+          </td>
+          <td class="w-25">
+
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <div class="card card-border-blue">
+
+
+
+
+
+
+
+    </div>
+
+    <h1 class="mt-5">Description de l'envoi</h1>
+    <div class="card" >
+      <table class="table table-bordered table-warning text-center"  >
+        <thead>
+        <tr>
+          <th>Service</th>
+          <th>Poid saisie</th>
+          <th>Poid volumetrique</th>
+          <th>Montant contre remboursement</th>
+          <th>Domicialisation</th>
+          <th>Valeur d'envoi</th>
+          <th>Tarif d'envoi</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="align-middle" style="width: 150px;">
+            <input type="radio" (ngModelChange)="getTarifServiceChange()" formControlName="service" value="ems" name="service"  id="ems">&nbsp;
+            <label for="ems">EMS</label><br>
+            <input type="radio" (ngModelChange)="getTarifServiceChange()" formControlName="service" value="rppi" name="service"  id="rppi">&nbsp;
+            <label for="rppi">RPPI</label>
+
+          </td>
+          <td class="align-middle">
+            <input type="number" formControlName="poidSaisi" class="form-control">
+          </td>
+          <td class="align-middle">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="lo">Longeur: </label>
+                <input type="number" (ngModelChange)="calculPv()" id="lo" formControlName="longeur" value="0"  placeholder="longeur" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label for="l">Largeur: </label>
+                <input type="number" (ngModelChange)="calculPv()" id="l" formControlName="largeur" value="0" placeholder="largeur" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label for="h">Hauteur: </label>
+                <input type="number" (ngModelChange)="calculPv()" id="h" formControlName="hauteur" value="0" placeholder="hauteur" class="form-control">
+              </div>
+            </div>
+            <br>
+            <label for="pv">Poid volumetrique : </label>
+            <input class="form-control " id="pv" type="number" (ngModelChange)="getTarif()" placeholder="Poid volumetrique" readonly formControlName="poidvol" [ngModel]="poidvol">
+
+          </td>
+
+
+          <td class="align-middle">
+            <select formControlName="crbtBool" (ngModelChange)="setCrbtVal()" class="form-control">
+              <option value="oui">Oui</option>
+              <option value="non">Non</option>
+            </select><br>
+            <input class="form-control " type="number" formControlName="crbt" [ngModel]="crbtVal" readonly>
+
+          </td>
+          <td class="align-middle">
+            <select formControlName="domicialisation" (ngModelChange)="setDomicVal()" class="form-control">
+              <option value="oui">Oui</option>
+              <option value="non">Non</option>
+            </select><br>
+            <input class="form-control " type="number" formControlName="domicVal" [ngModel]="domicVal" readonly>
+
+          </td>
+          <td class="align-middle">
+            <input type="text" formControlName="valeurColis" placeholder="Valeurs colis" class="form-control">
+          </td>
+          <td class="align-middle">
+            <input type="text" formControlName="tariff"  class="form-control" [ngModel]="tariff" readonly>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center">
+      <label for="codeenvoi">Code d'envoi</label>
+      <input id="codeenvoi" type="text" formControlName="codeenvoi" class="form-control" style="margin-left:40%;width: 20%; "  [ngModel]="idEnvoi">
+    </div>
+    <div class="text-center m-5">
+      <button class="btn poste-white-btn m-1" *ngIf="ok">
+        Valider l'envoi
+      </button>
+      <button class="btn btn-danger disabled  m-1" [disabled]="" disabled *ngIf="!ok">
+        Veuillez cloturer l'ancien depot
+      </button>
+      <a class="btn poste-white-btn m-1" routerLink="/public/home" > Annuler</a>
+    </div>
+
+    <div class="text-center m-5">
+      <table class="w-50" style="margin-left: 25%">
+        <tr>
+          <td><input type="text" class="form-control" formControlName="depot" [ngModel]="idDepot"></td>
+          <td><a class="btn poste-white-btn" (click)="cloturerDepot()">Cloturer le depot</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
+
+</div>
+<div class="container">
+  <table class="table tablebrdr text-center w-100">
+    <caption>Contenu de bordereau</caption>
+    <thead>
+    <tr>
+      <th scope="col">Code envoi</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Valeur de marchandise</th>
+      <th scope="col">Poids(kg)</th>
+      <th scope="col">Tarif</th>
+      <th scope="col">Tarif avec remise</th>
+      <th scope="col">CRBT</th>
+      <th scope="col">Déclaration</th>
+      <th scope="col">Supprimer</th>
+
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr class="my-table-tr" *ngFor="let env of listeEnvois">
+      <td>{{env.id}}</td>
+      <td>{{env.CUSTOMER_ADDRESS}}</td>
+      <td>{{env.TAXE_estime}}</td>
+      <td>{{env.MAILITM_WEIGHT_estime}}</td>
+      <td>{{env.taxe_reel}}</td>
+      <td>{{env.taxe_avec_remise}}</td>
+      <td *ngIf="env.crbt == 'y'">Oui</td>
+      <td *ngIf="env.crbt == 'n'">Non</td>
+      <td>pdf</td>
+      <td><a class="text-danger  "><i class="fas fa-trash-alt"></i></a></td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mes adresses</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Ville</th>
+            <th>Pays</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let adresses1 of adresses" (click)="getDest(adresses1.id)">
+            <td>{{adresses1.destinataire}}</td>
+            <td>{{adresses1.adresse}}</td>
+            <td>{{adresses1.ville}}</td>
+            <td>{{adresses1.pays}}</td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

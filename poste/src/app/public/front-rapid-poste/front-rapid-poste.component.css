@@ -1,0 +1,37 @@
+.bg-table{
+  border: 1px solid red !important;
+}
+.poste-white-btn{
+  background: white;
+  border: 1px solid #C58C45 ;
+}
+.btn-ajouter{
+  background: #fcc513;
+  color:#071d61!important;
+}
+.card-border-blue{
+  border: none;
+
+}
+
+.table-border-blue{
+  border: 1px solid #7E89AD !important;
+
+}
+.table-border-blue th{
+  border-bottom: 1px solid #7E89AD !important;
+  background: #7E89AD;
+}
+
+.table-border-blue td{
+  border-bottom: 1px solid #7E89AD !important;
+}
+.tablebrdr
+{
+  background-color: #213571!important;
+  width: 90%;
+  color:  #fcc513 ;
+}
+.my-table-tr td {
+  color: white !important;
+}

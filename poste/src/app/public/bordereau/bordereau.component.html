@@ -1,0 +1,99 @@
+
+
+<div class="container">
+  <div class="card">
+  <div class="card-header py-3">
+    <h6 class="text-primary">
+      Ajouter Bordereau
+    </h6>
+  </div>
+    <div class="card-body p-5">
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="row">
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="code bordereau"  class="form-control" formControlName="code_bordereau">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="date" placeholder="date bordereau"  class="form-control" formControlName="date_bordereau">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="etat borderaux"  class="form-control" formControlName="etat_borderaux">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="code_client_depot"  class="form-control" formControlName="code_client_depot">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="code_client"  class="form-control" formControlName="code_client">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="code_service"  class="form-control" formControlName="code_service">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="validation"  class="form-control" formControlName="validation">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="date" placeholder="date_validation"  class="form-control" formControlName="date_validation">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="anne_depot"  class="form-control" formControlName="anne_depot">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="mois_depot"  class="form-control" formControlName="mois_depot">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="montant_depot_sr"  class="form-control" formControlName="montant_depot_sr">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="montant_avec_remise"  class="form-control" formControlName="montant_avec_remise">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="mnt_tax_vd"  class="form-control" formControlName="mnt_tax_vd">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="registre_decommerce"  class="form-control" formControlName="registre_decommerce">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="reception"  class="form-control" formControlName="reception">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="date" placeholder="date_reception"  class="form-control" formControlName="date_reception">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="matricule_reception"  class="form-control" formControlName="matricule_reception">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="demande_collecte"  class="form-control" formControlName="demande_collecte">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="text" placeholder="etat_collecte"  class="form-control" formControlName="etat_collecte">
+          </div>
+          <div class="form-group col-md-6">
+
+            <input type="date" placeholder="date_collecte"  class="form-control" formControlName="date_collecte"></div>
+
+          <button  class="btn w-100 btn-success">Ajouter</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

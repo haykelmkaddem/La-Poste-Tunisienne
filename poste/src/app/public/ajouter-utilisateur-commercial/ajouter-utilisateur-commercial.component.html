@@ -1,0 +1,50 @@
+
+<div class="container">
+    <div class="card ">
+      <div class="card-header py-3">
+        <h6 class="text-primary">
+          Ajouter un Utilisateur/Commerciale
+        </h6>
+      </div>
+      <div class="card-body p-5">
+        <form [formGroup]="form" (submit)="onSubmit()">
+
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="nomresonsociale" placeholder="nom reson sociale"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="code_unite_com" placeholder="code_unite_com"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="adresse" placeholder="adresse"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="cadresse" placeholder="cadresse"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="localite" placeholder="localite"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="code_postal" placeholder="code_postal"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="telephone" placeholder="telephone"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="fax" placeholder="fax"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="email" placeholder="email"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" formcontrolname="REF_importateur" placeholder="REF_importateur"> <br>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="file" (change)="onFileSelected($event)" placeholder="ccp"> <br>
+          </div>
+          <button >Ajouter</button>
+        </form>
+      </div>
+    </div>
+
+</div>

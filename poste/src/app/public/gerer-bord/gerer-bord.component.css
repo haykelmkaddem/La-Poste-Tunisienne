@@ -1,0 +1,26 @@
+table
+{   
+    background-color: #213571!important;
+    color:  #fcc513 ;
+}
+.vertical-line{
+    border-left: 4px solid #fcc513;
+    display: inline-block;
+    height: 130px;
+    margin: 0 20px;
+  }
+  .btn {
+    background-color: #213571!important;
+    color:  #fcc513 ;
+    width:100px!important;
+    margin: 5px !important;
+    height: 40px !important;
+  }
+  select {
+    background-color: #213571!important;
+    color:  #fcc513 ;
+    width:100px!important;
+    margin: 5px !important;
+    height: 40px !important;
+  }
+  

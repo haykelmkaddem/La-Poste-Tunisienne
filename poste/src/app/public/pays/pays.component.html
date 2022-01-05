@@ -1,0 +1,63 @@
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header py-3">
+          <h6 class="text-primary">
+            Ajouter Pays
+          </h6>
+        </div>
+        <div class="card-body p-5">
+          <form [formGroup]="form" (submit)="onSubmitPays()">
+            <div class="form-group">
+              <input class="form-control" type="text" formcontrolname="code" placeholder="code"> <br>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" formcontrolname="name" placeholder="name"> <br>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" formcontrolname="groupe" placeholder="groupe"> <br>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" formcontrolname="codecoursier" placeholder="codecoursier"> <br>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" formcontrolname="codezone" placeholder="codezone"> <br>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" formcontrolname="langue" placeholder="langue"> <br>
+            </div>
+            <button [disabled]="!form.valid">Ajouter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header py-3">
+          <h6 class="text-primary">
+            Ajouter Zone
+          </h6>
+        </div>
+        <div class="card-body p-5">
+      <form [formGroup]="form1" (submit)="onSubmitZone()">
+
+        <div class="form-group">
+          <input class="form-control" type="text" formcontrolname="code_zone" placeholder="code_zone"> <br>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" formcontrolname="nom_zone" placeholder="nom_zone"> <br>
+        </div>
+
+        <button [disabled]="!form.valid">Ajouter</button>
+      </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

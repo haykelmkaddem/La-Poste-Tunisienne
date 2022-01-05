@@ -1,0 +1,8 @@
+<h2>Ajouter</h2>
+<form [formGroup]="form" (submit)="onSubmit()">
+  <input class="form-control" type="text" formControlName="nom" placeholder="Nom"> <br>
+  <input class="form-control" type="text" formControlName="prenom" placeholder="Prenom"> <br>
+  <input class="form-control" type="text" formControlName="login" placeholder="Login"> <br>
+  <input class="form-control" type="password" formControlName="password" placeholder="password"> <br>
+  <button [disabled]="!form.valid">Register</button>
+</form>

@@ -1,0 +1,186 @@
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header">
+      <h5 class="card-title" >Mes adresses</h5>
+    </div>
+    <div class="card-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="input-group mb-3 w-50">
+              <input type="text" class="form-control" name="textSearch" placeholder="Recherche..." id="searchText" [ngModel]="searchText">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="search(searchText)" type="button" ><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <a data-toggle="modal" data-target="#exampleModal" (click)="viderForm()" class="btn btn-ajouter w-100">
+              Ajouter &nbsp;<i class="fas fa-plus"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <table class="table text-center">
+        <thead class="my-thead">
+        <tr>
+          <th>Nom</th>
+          <th>Adresse</th>
+          <th>Pays</th>
+          <th>Ville</th>
+          <th>Num telephone</th>
+          <th>Email</th>
+          <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let adresses1 of adresses">
+          <td *ngIf="dataa == adresses1.code_client">{{ adresses1.destinataire }}</td>
+          <td *ngIf="dataa == adresses1.code_client">{{ adresses1.adresse }} </td>
+          <td *ngIf="dataa == adresses1.code_client">{{ adresses1.pays }}</td>
+          <td *ngIf="dataa == adresses1.code_client">{{ adresses1.ville }}</td>
+          <td *ngIf="dataa == adresses1.code_client">{{ adresses1.telephone }}</td>
+          <td *ngIf="dataa == adresses1.code_client">{{ adresses1.email }}</td>
+          <td *ngIf="dataa == adresses1.code_client" style="width: 230px">
+            <a href="" (click)="remplirForm(adresses1)"  data-toggle="modal" data-target="#exampleModal" class="text-success">modifier <i class="fas fa-user-edit"></i></a>
+            <a href="" data-toggle="modal"  (click)="deleteAdresse(adresses1)"class="text-danger ml-3">Supprimer <i class="fas fa-user-minus"></i></a>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter/Modifier</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (submit)="onSubmit()">
+          <table class="w-100 table table-striped">
+
+            <tbody>
+            <tr>
+              <td class="w-75">
+                <div class="form-group">
+                  <label for="dest">Destinataire</label>
+                  <input class="form-control" id="dest" type="text" formControlName="destinataire" placeholder="destinataire">
+                </div>
+              </td>
+              <td class="w-25">
+                <div class="form-group">
+                  <label for="gsm">Gsm</label>
+                  <input class="form-control" id="gsm" type="text" formControlName="gsm" placeholder="gsm">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="w-75">
+                <div class="form-group">
+                  <label for="paysdest">Pays</label>
+                  <select id="paysdest" class="form-control " formControlName="pays" >
+                    <option *ngFor="let pay of pays" value="{{pay.name}}">{{pay.name}}</option>
+                  </select>
+                </div>
+              </td>
+              <td class="w-25">
+                <div class="form-group">
+                  <label for="fax">Fax</label>
+                  <input class="form-control" type="text" id="fax" formControlName="fax" placeholder="fax">
+                </div>
+
+              </td>
+            </tr>
+            <tr>
+              <td class="w-75">
+
+                <div class="form-group">
+                  <label for="adresse">Adresse</label>
+                  <input class="form-control" type="text" id="adresse" formControlName="adresse" placeholder="adresse">
+                </div>
+              </td>
+              <td class="w-25">
+
+                <div class="form-group">
+                  <label for="Email">Email</label>
+                  <input class="form-control" type="text" id="Email" formControlName="email" placeholder="email">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="w-75">
+                <div class="form-group">
+                  <label for="Ville">Ville</label>
+                  <input class="form-control" type="text" id="Ville" formControlName="ville" placeholder="ville">
+                </div>
+
+              </td>
+              <td class="w-25">
+
+                <div class="form-group">
+                  <label for="Telephone">Telephone</label>
+                  <input class="form-control" type="text" id="Telephone" formControlName="telephone" placeholder="telephone">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="w-75">
+                <div class="form-group">
+                  <label for="Code postal">Code postal</label>
+                  <input class="form-control" type="text" id="Code postal" formControlName="code_postal" placeholder="code_postal">
+                </div>
+
+              </td>
+              <td class="w-25">
+
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+          <button class="btn btn-ajouter w-100" (click)="addOrUpdate()"   data-dismiss="modal">Enregistrer</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal delete -->
+<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabelDelete">Suppression d'une adresse</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 class="text-primary">
+          Cliquez Supprimer pour confirmer la suppression de l'adresse:
+        </h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Supprimer</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

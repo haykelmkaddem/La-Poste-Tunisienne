@@ -1,0 +1,62 @@
+
+
+
+<div id="logreg-forms">
+<form [formGroup]="form"   class="form-signin" (submit)="submit()">
+    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Connexion</h1>
+  <h6 class="text-success">
+    <div *ngIf="success == 'changed'">
+      Mot de Passe Récuperer avec succés
+    </div>
+  </h6>
+  <div class="form-group">
+    <input type="text" id="inputLastName" formControlName="email" class="form-control" placeholder="Login">
+  </div>
+  <div class="form-group">
+    <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="password">
+  </div>
+  <button class="btn btn-md btn-rounded btn-block form-control submit">
+    Login
+  </button>
+
+  <div style="text-align: center"> Mot de passe Oubliée? </div>
+  <div class="input-group ">
+    <a data-toggle="modal" data-target="#exampleModal" class="btn btn-md btn-rounded btn-block  submit " >Récupération Compte</a>
+  </div>
+
+</form>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Recuperer mon compte</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formRecuperation" (submit)="submitDemandeDeRecuperation()" >
+          <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Merci de saisir votre email.</h1>
+          <div class="form-group">
+            <input type="email"  formControlName="emailrec" class="form-control" placeholder="Email">
+          </div>
+          <div *ngIf="RecEnvoye">
+            <h6 class="text-success">Vous avez reçu un email de recuperation!</h6>
+          </div>
+          <button class="btn btn-md btn-rounded btn-block form-control submit">
+            Envoyer un email de recuperation
+          </button>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.btn-secondary {
+  color: #fff;
+  background-color: #071d61;
+  border-color: #fcc513;
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+  height: 70px;
+}
+nav {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+footer{
+  padding: 10px;
+  text-align: center;
+  bottom: 0!important;
+  width: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  position: relative!important;
+}
+.dropdown-menu{
+  border: none;
+  background: #7E89AD;
+}
+.dropdown-item{
+  color: white;
+}

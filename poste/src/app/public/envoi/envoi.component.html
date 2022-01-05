@@ -1,0 +1,511 @@
+<div class="container">
+  <h1>Destinataire</h1>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-ajouter float-right m-1" data-toggle="modal" data-target="#exampleModal">
+    Mes Adresses
+  </button>
+  <form [formGroup]="form" (submit)="onSubmit()">
+  <div class="card">
+
+
+<!-- carnet adresse -->
+      <table class="w-100 table table-striped">
+
+        <tbody>
+        <tr>
+          <td class="w-75">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="destinataire" placeholder="destinataire">
+            </div>
+          </td>
+          <td class="w-25">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="gsm" placeholder="gsm">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-75">
+            <div class="form-group">
+              <label for="paysdest">Pays</label>
+              <select id="paysdest" class="form-control " formControlName="pays" >
+                <option *ngFor="let pay of pays" value="{{pay.name}}">{{pay.name}}</option>
+              </select>
+            </div>
+          </td>
+          <td class="w-25">
+            <div class="form-group">
+              <label for="paysdest">Fax</label>
+              <input class="form-control" type="text" formControlName="fax" placeholder="fax">
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <td class="w-75">
+
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="adresse" placeholder="adresse">
+            </div>
+          </td>
+          <td class="w-25">
+
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="email" placeholder="email">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-75">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="ville" placeholder="ville">
+            </div>
+
+          </td>
+          <td class="w-25">
+
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="telephone" placeholder="telephone">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-75">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="code_postal" placeholder="code_postal">
+            </div>
+
+          </td>
+          <td class="w-25">
+
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+
+  </div>
+
+   <h1 class=" mt-5">Contenue</h1>
+ <div class="card card-border-blue">
+
+
+
+
+
+
+
+ <table class="table table-border-blue">
+   <thead>
+     <tr>
+       <th scope="col">Description</th>
+       <th scope="col">CODE HS</th>
+       <th scope="col">Pays Origine</th>
+       <th scope="col">Poids (Kg)</th>
+       <th scope="col">QT</th>
+       <th scope="col">Valeur</th>
+       <th scope="col" class="pr-5">Devise</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <td>
+         <div class="form-group">
+           <input  class="dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="text"  (ngModelChange)="searchDesc($event)" formControlName="libelle_artique" placeholder="libelle_artique" [ngModel]="desc">
+           <div class="dropdown-menu">
+            <span class="dropdown-item" *ngFor="let description of descriptions.slice(0, 5); " (click)="onSelectDesc(description,0)">
+              {{ description.key_word }}
+              <br>
+              {{ description.nom }}
+            </span>
+           </div>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" formControlName="code_hs" placeholder="code_hs" [ngModel]="codeHs">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+             <select class="form-control " formControlName="pays_origine" (change)="onChangepays($event)" (ngModelChange)="onChangepays($event)">
+               <option *ngFor="let pay of pays" value="{{pay.name}}" >{{pay.name}}</option>
+             </select>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" (change)="poid($event)" formControlName="poids_net" placeholder="poids_net">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" formControlName="quantite" (change)="getQT($event)" placeholder="quantite">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" (change)="getValeur($event)" formControlName="prix_total_ht" placeholder="prix_total_ht" >
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <select class="form-control " formControlName="devise" >
+             <option value="TND" selected="selected">TND</option>
+             <option value="USD">USD</option>
+             <option value="EUR">EUR</option>
+           </select>
+         </div>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <div class="form-group">
+           <input  class="dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="text"  (ngModelChange)="searchDesc($event)" formControlName="libelle_artique1" placeholder="libelle_artique" [ngModel]="desc1">
+           <div class="dropdown-menu">
+            <span class="dropdown-item" *ngFor="let description of descriptions.slice(0, 5); " (click)="onSelectDesc(description,1)">
+              {{ description.key_word }}
+              <br>
+              {{ description.nom }}
+            </span>
+           </div>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" formControlName="code_hs1" placeholder="code_hs" [ngModel]="codeHs1">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <select class="form-control " formControlName="pays_origine1" (ngModelChange)="onChangepays1($event)">
+             <option *ngFor="let pay of pays" value="{{pay.name}}">{{pay.name}}</option>
+           </select>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" (change)="poid1($event)" formControlName="poids_net1" placeholder="poids_net">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" formControlName="quantite1" (change)="getQT1($event)" placeholder="quantite">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" (change)="getValeur1($event)" formControlName="prix_total_ht1" placeholder="prix_total_ht">
+         </div>
+       </td>
+       <td>
+
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <div class="form-group">
+           <input  class="dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="text"  (ngModelChange)="searchDesc($event)" formControlName="libelle_artique2" placeholder="libelle_artique" [ngModel]="desc2">
+           <div class="dropdown-menu">
+            <span class="dropdown-item" *ngFor="let description of descriptions.slice(0, 5); " (click)="onSelectDesc(description,2)">
+              {{ description.key_word }}
+              <br>
+              {{ description.nom }}
+            </span>
+           </div>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" formControlName="code_hs2" placeholder="code_hs" [ngModel]="codeHs2">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <select class="form-control " formControlName="pays_origine2" (ngModelChange)="onChangepays2($event)" >
+             <option *ngFor="let pay of pays" [value]="pay.name">{{pay.name}}</option>
+           </select>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" (change)="poid2($event)" formControlName="poids_net2" placeholder="poids_net">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" formControlName="quantite2" (change)="getQT2($event)" placeholder="quantite">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" (change)="getValeur2($event)" formControlName="prix_total_ht2" placeholder="prix_total_ht" >
+         </div>
+       </td>
+       <td>
+
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <div class="form-group">
+           <input  class="dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="text" (ngModelChange)="searchDesc($event)" formControlName="libelle_artique3" placeholder="libelle_artique" [ngModel]="desc3">
+           <div class="dropdown-menu">
+            <span class="dropdown-item" *ngFor="let description of descriptions.slice(0, 5); " (click)="onSelectDesc(description,3)">
+              {{ description.key_word }}
+              <br>
+              {{ description.nom }}
+            </span>
+           </div>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" formControlName="code_hs3" placeholder="code_hs" [ngModel]="codeHs3">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <select class="form-control " formControlName="pays_origine3" (ngModelChange)="onChangepays3($event)" >
+             <option *ngFor="let pay of pays" value="{{pay.name}}">{{pay.name}}</option>
+           </select>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" (change)="poid3($event)" formControlName="poids_net3" placeholder="poids_net">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" formControlName="quantite3" (change)="getQT3($event)" placeholder="quantite">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" (change)="getValeur3($event)" formControlName="prix_total_ht3" placeholder="prix_total_ht">
+         </div>
+       </td>
+       <td>
+
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <div class="form-group">
+           <input  class="dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="text"  (ngModelChange)="searchDesc($event)" formControlName="libelle_artique4" placeholder="libelle_artique" [ngModel]="desc4">
+           <div class="dropdown-menu">
+            <span class="dropdown-item" *ngFor="let description of descriptions.slice(0, 5); " (click)="onSelectDesc(description,4)">
+              {{ description.key_word }}
+              <br>
+              {{ description.nom }}
+            </span>
+           </div>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" formControlName="code_hs4" placeholder="code_hs" [ngModel]="codeHs4">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <select class="form-control " formControlName="pays_origine4" (ngModelChange)="onChangepays4($event)" >
+             <option *ngFor="let pay of pays" value="{{pay.name}}">{{pay.name}}</option>
+           </select>
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" (change)="poid4($event)" formControlName="poids_net4" placeholder="poids_net">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="number" formControlName="quantite4" (change)="getQT4($event)" placeholder="quantite">
+         </div>
+       </td>
+       <td>
+         <div class="form-group">
+           <input class="form-control" type="text" (change)="getValeur4($event)" formControlName="prix_total_ht4" placeholder="prix_total_ht">
+         </div>
+       </td>
+       <td>
+
+       </td>
+     </tr>
+   </tbody>
+ </table>
+ </div>
+
+      <h1 class="mt-5">Description de l'envoi</h1>
+      <div class="card" >
+        <table class="table table-bordered table-warning"  >
+          <thead>
+            <tr>
+              <th>Poids final brut (Kg)</th>
+              <th>Valeur marchandise et document d'accompagnement</th>
+              <th>Tarif sans remise</th>
+              <th>Tarif avec remise</th>
+              <th>Domicialisation</th>
+              <th>CRBT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="align-middle">
+
+                  <input class="form-control " type="number" formControlName="totalPoids" [ngModel]="totPoids" readonly>
+
+              </td>
+              <td>
+                <label for="totVal">Valeur Totale</label>
+                <input id="totVal" class="form-control" type="number" formControlName="totalValeurs" [ngModel]="totValeurs" readonly>
+                <label for="totPoid">Poids Net</label>
+                <input id="totPoid" class="form-control" type="number" formControlName="totalPoids" [ngModel]="totPoids" readonly>
+                <label for="totDesc">Description</label>
+                <textarea id="totDesc" class="form-control" type="number" rows="5" formControlName="totDescs" [ngModel]="totDescs"  readonly>
+                </textarea>
+                <div class="form-group  mt-3">
+                  <label for="categorie">Categorie</label>
+                  <select id="categorie" class="form-control" formControlName="categorieenvoi" >
+                    <option value="Agroalimentaire" selected="selected">Agroalimentaire</option>
+                    <option value="Alimentaire">Alimentaire</option>
+                    <option value="Artisanat">Artisanat</option>
+                  </select>
+                </div>
+              </td>
+              <td class="align-middle">
+
+                <input class="form-control " type="number" formControlName="tarifsansremise" [ngModel]="tarifSansRemise" readonly>
+
+              </td>
+              <td class="align-middle">
+
+                <input class="form-control " type="number" formControlName="tarifAvecRemise" [ngModel]="tarifAvecRemise" readonly>
+
+              </td>
+              <td class="align-middle">
+                <select formControlName="domicialisation"  class="form-control">
+                  <option value="oui">Oui</option>
+                  <option value="non">Non</option>
+                </select>
+              </td>
+              <td class="align-middle">
+                <select formControlName="crbtBool" class="form-control">
+                  <option value="oui">Oui</option>
+                  <option value="non">Non</option>
+                </select><br>
+                <input class="form-control " type="number" formControlName="crbt" [ngModel]="crbtValue" readonly>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <label for="codeenvoi">Code d'envoi</label>
+        <input id="codeenvoi" type="text" formControlName="codeenvoi" class="form-control" style="margin-left:40%;width: 20%; "  [ngModel]="idEnvoi">
+      </div>
+       <div class="text-center m-5">
+         <button class="btn poste-white-btn m-1" *ngIf="ok">
+           Valider l'envoi
+         </button>
+         <button class="btn btn-danger disabled  m-1" [disabled]="" disabled *ngIf="!ok">
+           Veuillez cloturer l'ancien depot!
+         </button>
+         <a class="btn poste-white-btn m-1" routerLink="/public/home" > Annuler</a>
+       </div>
+
+    <div class="text-center m-5">
+      <table class="w-50" style="margin-left: 25%">
+        <tr>
+          <td><input type="text" class="form-control" formControlName="depot" [ngModel]="idDepot"></td>
+          <td><a class="btn poste-white-btn" (click)="cloturerDepot()">Cloturer le depot</a></td>
+        </tr>
+      </table>
+    </div>
+ </form>
+
+
+</div>
+<div class="container">
+  <table class="table tablebrdr text-center">
+    <caption>Contenu de bordereau</caption>
+    <thead>
+    <tr>
+      <th scope="col">Code envoi</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Valeur de marchandise</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Poids(kg)</th>
+      <th scope="col">Tarif</th>
+      <th scope="col">Tarif avec remise</th>
+      <th scope="col">CRBT</th>
+      <th scope="col">Déclaration</th>
+      <th scope="col">Supprimer</th>
+      <th scope="col">CN22</th>
+      <th scope="col">CN23</th>
+    </tr>
+
+    </thead>
+    <tbody>
+      <tr class="my-table-tr" *ngFor="let env of listeEnvois">
+        <td>{{env.id}}</td>
+        <td>{{env.CUSTOMER_ADDRESS}}</td>
+        <td>{{env.TAXE_estime}}</td>
+        <td>{{env.categorie}}</td>
+        <td>{{env.MAILITM_WEIGHT_estime}}</td>
+        <td>{{env.taxe_reel}}</td>
+        <td>{{env.taxe_avec_remise}}</td>
+        <td *ngIf="env.crbt == 'y'">Oui</td>
+        <td *ngIf="env.crbt == 'n'">Non</td>
+        <td>pdf</td>
+        <td><a class="text-danger  "><i class="fas fa-trash-alt"></i></a></td>
+        <td>pdf</td>
+        <td>pdf</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mes adresses</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+         <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Adresse</th>
+              <th>Ville</th>
+              <th>Pays</th>
+            </tr>
+         </thead>
+         <tbody>
+         <tr *ngFor="let adresses1 of adresses" (click)="getDest(adresses1.id)">
+           <td>{{adresses1.destinataire}}</td>
+           <td>{{adresses1.adresse}}</td>
+           <td>{{adresses1.ville}}</td>
+           <td>{{adresses1.pays}}</td>
+
+         </tr>
+         </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

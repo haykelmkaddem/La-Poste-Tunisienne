@@ -1,0 +1,115 @@
+<section class="container" >
+
+  <!--Contact heading-->
+  <h2 class="h1 m-0">Contactez-nous</h2>
+  <!--Contact description-->
+  <p class="pb-4">Vous pouvez nous contacter directement par email, téléphone ou courrier.<br>
+    Pour ne manquer aucune actualité, suivez-nous sur nos réseaux sociaux.
+  </p>
+
+
+  <div class="row">
+
+    <!--Grid column-->
+    <div class="col-md-6 mb-4">
+
+      <!--Form with header-->
+      <div class="card border-primary rounded-0">
+
+        <div class="card-header p-0" >
+          <div class="bg-primary text-white text-center py-2">
+            <h3><i class="fa fa-envelope"></i> Contactez-nous </h3>
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <form [formGroup]="form" (submit)="onSubmit()" >
+
+            <!--Body-->
+            <div class="form-group">
+              <label>Nom</label>
+              <div class="input-group">
+                <div class="input-group-addon bg-light"><i class="fa fa-user text-primary"></i></div>
+                <input type="text" formControlName="nom"  class="form-control inlineFormInputGroupUsername" placeholder="Nom">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Adresse e-mail</label>
+              <div class="input-group mb-2 mb-sm-0">
+                <div class="input-group-addon bg-light"><i class="fa fa-envelope text-primary"></i></div>
+                <input type="email" formControlName="email" class="form-control inlineFormInputGroupUsername" placeholder="E-mail">
+              </div>
+            </div>
+            <div class="form-group">
+              <label> Sujet</label>
+              <div class="input-group mb-2 mb-sm-0">
+                <div class="input-group-addon bg-light"><i class="fa fa-tag prefix text-primary"></i></div>
+                <input type="text" formControlName="sujet" class="form-control inlineFormInputGroupUsername" placeholder="sujet">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <div class="input-group mb-2 mb-sm-0">
+                <div class="input-group-addon bg-light"><i class="fa fa-pencil text-primary"></i></div>
+                <textarea formControlName="message" class="form-control"></textarea>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-primary btn-block rounded-0 py-2">Envoyer</button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+    <div class=" col-md-6">
+      <div class="card bg-light mb-3">
+        <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-home"></i> Coordonées </div>
+        <div class="card-body">
+          <p>Adresse        :<a class="text-dark" href="https://goo.gl/maps/11YtGk6BcGv44S819">Rue Hédi Nouira -1030 Tunis, Tunisie</a> </p>
+          <p>Email          : brc@poste.tn</p>
+          <p>Tel            : (+216) 71 839 000  </p>
+          <p>Fax            : (+216) 71 839 113  </p>
+          <p>Numéro d'appel :71839033 - 71839015 - 71839000</p>
+          <p>	Horaire de Travail:	<br>
+            - Du Lundi au Jeudi : de 8h00 à 13h00 et de 14h00 à 17h00 <br>
+            - Le Vendredi : de 8h00 à 12h00 et de 14h00 à 17h00</p>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="partner-logo">
+          <img src="/assets/partner1.jpg" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner11.png" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner3.png" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner4.jpg" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner5.jpg" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner6.png" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner7.jpg" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner8.jpg" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner9.png" alt="">
+        </div>
+        <div class="partner-logo">
+          <img src="/assets/partner10.png" alt="">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

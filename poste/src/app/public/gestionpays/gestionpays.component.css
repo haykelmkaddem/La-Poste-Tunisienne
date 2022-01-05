@@ -1,0 +1,18 @@
+.my-bordered-btn{
+  border: .5px solid #ccc;
+  background: #7E89AD!important;
+  color: white!important;
+
+}
+.btn-ajouter{
+  background: #fcc513;
+  color:#071d61!important;
+}
+.my-custom-scrollbar {
+  position: relative;
+  height: 80vh;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
